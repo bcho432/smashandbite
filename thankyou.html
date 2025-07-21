@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Thank You!</title>
+    <link rel="stylesheet" href="styles.css">
+    <style>
+        .thankyou-container {
+            max-width: 600px;
+            margin: 100px auto;
+            background: #181818;
+            border-radius: 16px;
+            padding: 2rem;
+            color: #fff;
+            box-shadow: 0 4px 32px rgba(0,0,0,0.15);
+            text-align: center;
+        }
+        .thankyou-label {
+            color: #b33a2b;
+            font-weight: bold;
+            margin-top: 1.5rem;
+        }
+        .thankyou-value {
+            margin-bottom: 1.5rem;
+            word-break: break-all;
+        }
+    </style>
+</head>
+<body>
+    <div class="thankyou-container">
+        <h1>Thank You for Your Message!</h1>
+        <p>We have received your message and will get back to you soon.</p>
+        <div class="thankyou-label">Your Email:</div>
+        <div class="thankyou-value" id="email-value"></div>
+        <div class="thankyou-label">Your Message:</div>
+        <div class="thankyou-value" id="message-value"></div>
+        <a href="index.html" class="btn btn-primary">Back to Home</a>
+    </div>
+    <script>
+        const params = new URLSearchParams(window.location.search);
+        document.getElementById('email-value').textContent = params.get('email') || '';
+        document.getElementById('message-value').textContent = params.get('message') || '';
+    </script>
+</body>
+</html> 
