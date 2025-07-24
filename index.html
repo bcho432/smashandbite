@@ -8,13 +8,178 @@
     <link rel="stylesheet" href="styles.css">
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;700;900&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+    <!-- jQuery -->
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+    <!-- Slick Carousel CSS -->
+    <link rel="stylesheet" type="text/css" href="//cdn.jsdelivr.net/npm/slick-carousel@1.8.1/slick/slick.css"/>
+    <link rel="stylesheet" type="text/css" href="//cdn.jsdelivr.net/npm/slick-carousel@1.8.1/slick/slick-theme.css"/>
+    <style>
+        /* Mobile-only horizontal scroll prevention */
+        @media (max-width: 768px) {
+            html, body {
+                overflow-x: hidden !important;
+                max-width: 100vw !important;
+            }
+            
+            .nav-logo .logo {
+                margin-left: 0 !important;
+                transform: scale(2.5) !important;
+            }
+            
+            .hero-image-diagonal {
+                overflow-x: hidden !important;
+                max-width: 100vw !important;
+            }
+            
+            .hero-slide-image {
+                max-width: 100% !important;
+                overflow-x: hidden !important;
+            }
+            
+            /* Center social media icons on mobile */
+            .footer-social {
+                display: flex !important;
+                justify-content: center !important;
+                align-items: center !important;
+                gap: 20px !important;
+                flex-direction: column !important;
+                text-align: center !important;
+            }
+            
+            .footer-social h3 {
+                margin-bottom: 15px !important;
+                text-align: center !important;
+            }
+            
+            .footer-social a {
+                display: flex !important;
+                align-items: center !important;
+                justify-content: center !important;
+            }
+        }
+        
+        @media (max-width: 400px) {
+            .nav-logo .logo {
+                transform: scale(2.0) !important;
+            }
+        }
+        
+        /* Extra small screens - 429px and smaller */
+        @media (max-width: 429px) {
+            .section-title {
+                font-size: 1.5rem !important;
+                /* margin-left: -50px !important; */
+                text-align: left !important;
+                padding-left: 15px !important;
+            }
+            
+            .about-text {
+                padding-right: 20px !important;
+            }
+            
+            .about-text p {
+                padding-right: 15px !important;
+                padding-left: 15px !important;
+            }
+            
+            /* Only remove left padding from feature cards area */
+            .features {
+                padding-left: 0 !important;
+                margin-left: -2.5vw !important;
+                width: 100vw !important;
+                position: relative !important;
+                left: 50% !important;
+                transform: translateX(-50%) !important;
+            }
+            
+            .feature {
+                padding-right: 15px !important;
+                /* padding-left: 10px !important; */
+                padding-left: 0 !important;
+                margin-left: 0 !important;
+            }
+            
+            .feature h4,
+            .feature p {
+                padding-right: 10px !important;
+            }
+
+            .hero-slide-image {
+                object-position: 80% center !important;
+            }
+            
+            .hero-slide:nth-child(1) .hero-slide-image {
+                object-position: 80% center !important;
+            }
+            
+            .hero-slide:nth-child(2) .hero-slide-image {
+                object-position: 80% center !important;
+            }
+            
+            .hero-slide:nth-child(3) .hero-slide-image {
+                object-position: 40% center !important;
+            }
+            
+            .hero-slide:nth-child(4) .hero-slide-image {
+                object-position: 50% center !important;
+            }
+            
+            .hero-slide:nth-child(5) .hero-slide-image {
+                object-position: 30% center !important;
+            }
+
+            /* Remove all left spacing from about section containers */
+            .about-section,
+            .about-content {
+                padding-left: 0 !important;
+                margin-left: 0 !important;
+            }
+            
+            .about-showcase {
+                margin-left: 0vw !important;
+                margin-right: 0vw !important;
+                transform: translateX(-20px) !important;
+                width: 100vw !important;
+                max-width: 100vw !important;
+                position: relative !important;
+                left: 45% !important;
+                transform: translateX(-50%) !important;
+            }
+            
+            .about-slick-carousel {
+                margin-left: 0vw !important;
+            }
+        }
+
+        @media (max-width: 375px) {
+            
+            .about-showcase {
+                left: 41.5% !important;
+            }
+
+            .about-text {
+                padding-right: 50px !important;
+            }
+            
+            
+        }
+
+        @media (max-width: 360px) {
+            .hero-title {
+                font-size: 2.2rem !important;
+            }
+        }
+
+
+    </style>
 </head>
 <body>
     <!-- Navigation -->
     <nav class="navbar">
         <div class="nav-container">
             <div class="nav-logo">
-                <img src="smashandbitelogo.pdf" alt="Smash & Bite Logo" class="logo">
+                <img src="images/smashandbitelogo2.png?v=1" alt="Smash & Bite Logo" class="logo" style="width: 70px !important; height: 70px !important; display: block !important; visibility: visible !important; opacity: 1 !important; object-fit: contain; position: relative !important; z-index: 9999 !important; transform: scale(4.0) !important;" onload="console.log('Logo loaded successfully'); this.style.display='block'; this.style.visibility='visible'; this.style.opacity='1';" onerror="console.log('Logo failed to load'); this.style.display='none'; this.nextElementSibling.style.display='block';">
+                <div style="display: none; width: 70px; height: 70px; background: red; border: 2px solid blue; color: white; text-align: center; line-height: 70px; font-weight: bold;">LOGO</div>
             </div>
             <ul class="nav-menu">
                 <li class="nav-item">
@@ -45,10 +210,10 @@
             <h1 class="hero-title">SMASH & BITE</h1>
             <p class="hero-subtitle">HIGH-QUALITY SMASHED BURGERS AND SANDWICHES</p>
             <p class="hero-description">Experience the perfect bite packed with fresh, locally-sourced ingredients and bold flavors that will keep you coming back for more.</p>
-            <div class="hero-buttons">
-                <a href="#menu" class="btn btn-primary">VIEW MENU</a>
-                <a href="#contact" class="btn btn-secondary">ORDER NOW</a>
-            </div>
+                                <div class="hero-buttons">
+                        <a href="#menu" class="btn btn-primary">VIEW MENU</a>
+                        <button class="btn btn-secondary" id="order-now-btn">ORDER NOW</button>
+                    </div>
         </div>
         <div class="hero-image-diagonal">
             <div class="hero-slide active">
@@ -74,6 +239,25 @@
             <div class="burger-showcase"><i class="fas fa-hamburger"></i></div>
         </div>
     </section>
+
+    <!-- Order Modal -->
+    <div id="order-modal" class="order-modal">
+        <div class="order-modal-content">
+            <span class="order-modal-close">&times;</span>
+            <h3>Choose Your Delivery Service</h3>
+            <p>Select your preferred delivery platform:</p>
+            <div class="delivery-options">
+                <button class="delivery-btn doordash-btn" onclick="window.open('https://www.doordash.com/store/smash-&-bites-40-kellogg-rd-40-kellogg-rd-new-hartford-34882455/73919150/?event_type=autocomplete&pickup=false', '_blank')">
+                    <i class="fas fa-motorcycle"></i>
+                    <span>DoorDash</span>
+                </button>
+                <button class="delivery-btn grubhub-btn" onclick="confirmAndRedirect('https://www.grubhub.com/restaurant/smash--bite-40-kellogg-road-new-hartford/11976256', 'Grubhub')">
+                    <i class="fas fa-utensils"></i>
+                    <span>Grubhub</span>
+                </button>
+            </div>
+        </div>
+    </div>
 
     <!-- Menu Section -->
     <section id="menu" class="menu-section">
@@ -114,7 +298,17 @@
                 </div>
                 <div class="about-image">
                     <div class="about-showcase">
-                        <div class="burger-showcase"><i class="fas fa-hamburger"></i></div>
+                        <div class="about-slick-carousel">
+                            <div>
+                                <img src="images/Front.JPG" alt="Smash & Bite Front" class="about-slide-image">
+                            </div>
+                            <div>
+                                <img src="images/Wall1.JPG" alt="Smash & Bite Wall 1" class="about-slide-image">
+                            </div>
+                            <div>
+                                <img src="images/Wall2.JPG" alt="Smash & Bite Wall 2" class="about-slide-image">
+                            </div>
+                        </div>
                     </div>
                 </div>
             </div>
@@ -197,8 +391,7 @@
                     <h4>Follow Us</h4>
                     <div class="social-links">
                         <a href="#"><i class="fab fa-facebook"></i></a>
-                        <a href="#"><i class="fab fa-instagram"></i></a>
-                        <a href="#"><i class="fab fa-twitter"></i></a>
+                        <a href="https://www.instagram.com/smash_and_bite/" target="_blank"><i class="fab fa-instagram"></i></a>
                     </div>
                 </div>
             </div>
@@ -208,6 +401,11 @@
         </div>
     </footer>
 
+    <!-- jQuery and Slick Carousel JS -->
+    <script type="text/javascript" src="//code.jquery.com/jquery-1.11.0.min.js"></script>
+    <script type="text/javascript" src="//code.jquery.com/jquery-migrate-1.2.1.min.js"></script>
+    <script type="text/javascript" src="//cdn.jsdelivr.net/npm/slick-carousel@1.8.1/slick/slick.min.js"></script>
+    
     <script src="script.js"></script>
 </body>
 </html> 

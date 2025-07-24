@@ -1,3 +1,48 @@
+// Order Modal Functionality
+const orderModal = document.getElementById('order-modal');
+const orderNowBtn = document.getElementById('order-now-btn');
+const orderModalClose = document.querySelector('.order-modal-close');
+
+// Open modal when ORDER NOW is clicked
+orderNowBtn.addEventListener('click', () => {
+    orderModal.style.display = 'block';
+    document.body.style.overflow = 'hidden'; // Prevent background scrolling
+});
+
+// Close modal when X is clicked
+orderModalClose.addEventListener('click', () => {
+    orderModal.style.display = 'none';
+    document.body.style.overflow = 'auto'; // Restore scrolling
+});
+
+// Close modal when clicking outside of it
+window.addEventListener('click', (event) => {
+    if (event.target === orderModal) {
+        orderModal.style.display = 'none';
+        document.body.style.overflow = 'auto';
+    }
+});
+
+// Close modal with Escape key
+document.addEventListener('keydown', (event) => {
+    if (event.key === 'Escape' && orderModal.style.display === 'block') {
+        orderModal.style.display = 'none';
+        document.body.style.overflow = 'auto';
+    }
+});
+
+// Function to confirm and redirect to delivery platform
+function confirmAndRedirect(url, platform) {
+    const message = `You're about to be redirected to ${platform}.\n\nMake sure to change the pickup time!\n\nClick OK to continue.`;
+    
+    if (confirm(message)) {
+        window.open(url, '_blank');
+        // Close the modal after redirecting
+        orderModal.style.display = 'none';
+        document.body.style.overflow = 'auto';
+    }
+}
+
 // Mobile Navigation Toggle
 const hamburger = document.querySelector('.hamburger');
 const navMenu = document.querySelector('.nav-menu');
@@ -157,15 +202,41 @@ document.querySelectorAll('.menu-item').forEach(item => {
     });
 });
 
-// Lazy load image fade-in (excluding hero slideshow images)
+// Lazy load image fade-in (excluding hero and about slideshow images)
 document.addEventListener('DOMContentLoaded', () => {
-    const images = document.querySelectorAll('img:not(.hero-slide-image)');
+    const images = document.querySelectorAll('img:not(.hero-slide-image):not(.about-slide-image)');
     images.forEach(img => {
         img.addEventListener('load', function () {
             this.style.opacity = '1';
         });
         img.style.opacity = '0';
         img.style.transition = 'opacity 0.3s ease';
+    });
+});
+
+// Initialize Slick carousel for about section
+document.addEventListener('DOMContentLoaded', () => {
+    // Initialize Slick carousel
+    $('.about-slick-carousel').slick({
+        dots: true,
+        infinite: true,
+        speed: 600,
+        slidesToShow: 1,
+        slidesToScroll: 1,
+        autoplay: true,
+        autoplaySpeed: 6000,
+        arrows: true,
+        fade: false,
+        cssEase: 'ease-in-out',
+        responsive: [
+            {
+                breakpoint: 768,
+                settings: {
+                    arrows: true,
+                    dots: true
+                }
+            }
+        ]
     });
 });
 
@@ -400,6 +471,22 @@ document.addEventListener('DOMContentLoaded', () => {
         console.error('No hero slides found!');
     }
 });
+
+// Logo visibility fix
+function ensureLogoVisible() {
+    const logo = document.querySelector('.nav-logo .logo');
+    if (logo) {
+        logo.style.display = 'block';
+        logo.style.visibility = 'visible';
+        logo.style.opacity = '1';
+    }
+}
+
+// Run the logo fix every 100ms
+setInterval(ensureLogoVisible, 100);
+
+// Also run it when the page loads
+document.addEventListener('DOMContentLoaded', ensureLogoVisible);
 
 
 
