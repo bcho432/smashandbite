@@ -377,7 +377,7 @@ let currentHeroSlideIndex = 0;
 let heroSlides = [];
 
 function showHeroSlide(index) {
-    console.log('Showing hero slide:', index);
+    // console.log('Showing hero slide:', index);
     
     // Hide all hero slides
     heroSlides.forEach(slide => {
@@ -391,7 +391,7 @@ function showHeroSlide(index) {
         heroSlides[index].classList.add('active');
         heroSlides[index].style.opacity = '1';
         heroSlides[index].style.zIndex = '10';
-        console.log('Activated slide:', index);
+        // console.log('Activated slide:', index);
     } else {
         console.error('Slide not found at index:', index);
     }
@@ -406,7 +406,7 @@ function nextHeroSlide() {
         newIndex = 0;
     }
     
-    console.log('Moving to next slide:', newIndex);
+    // console.log('Moving to next slide:', newIndex);
     showHeroSlide(newIndex);
 }
 
@@ -414,26 +414,26 @@ function nextHeroSlide() {
 document.addEventListener('DOMContentLoaded', () => {
     heroSlides = document.querySelectorAll('.hero-slide');
     
-    console.log('Found hero slides:', heroSlides.length);
+    // console.log('Found hero slides:', heroSlides.length);
     
     // Debug: Check each slide and image
     heroSlides.forEach((slide, index) => {
         const img = slide.querySelector('.hero-slide-image');
-        console.log(`Slide ${index}:`, slide);
-        console.log(`Slide ${index} image:`, img);
-        if (img) {
-            console.log(`Slide ${index} image src:`, img.src);
-            console.log(`Slide ${index} image loaded:`, img.complete);
+        // console.log(`Slide ${index}:`, slide);
+        // console.log(`Slide ${index} image:`, img);
+        // if (img) {
+            // console.log(`Slide ${index} image src:`, img.src);
+            // console.log(`Slide ${index} image loaded:`, img.complete);
             
             // Add load event listener to debug image loading
-            img.addEventListener('load', () => {
-                console.log(`Slide ${index} image loaded successfully`);
-            });
+        //     img.addEventListener('load', () => {
+        //         console.log(`Slide ${index} image loaded successfully`);
+        //     });
             
-            img.addEventListener('error', () => {
-                console.error(`Slide ${index} image failed to load:`, img.src);
-            });
-        }
+        //     img.addEventListener('error', () => {
+        //         console.error(`Slide ${index} image failed to load:`, img.src);
+        //     });
+        // }
     });
     
     if (heroSlides.length > 0) {
@@ -445,17 +445,17 @@ document.addEventListener('DOMContentLoaded', () => {
             firstSlide.style.opacity = '1';
             firstSlide.style.zIndex = '10';
             firstSlide.classList.add('active');
-            console.log('Forced first slide to be visible');
+            // console.log('Forced first slide to be visible');
             
             // Check if image is loaded
-            if (firstImage.complete) {
-                console.log('First image is already loaded');
-            } else {
-                console.log('First image is still loading...');
-                firstImage.addEventListener('load', () => {
-                    console.log('First image loaded successfully');
-                });
-            }
+            // if (firstImage.complete) {
+            //     console.log('First image is already loaded');
+            // } else {
+            //     console.log('First image is still loading...');
+            //     firstImage.addEventListener('load', () => {
+            //         console.log('First image loaded successfully');
+            //     });
+            // }
         }
         
         // Initialize first slide
@@ -466,10 +466,8 @@ document.addEventListener('DOMContentLoaded', () => {
             nextHeroSlide();
         }, 3000);
         
-        console.log('Slideshow initialized successfully');
-    } else {
-        console.error('No hero slides found!');
-    }
+        // console.log('Slideshow initialized successfully');
+    } 
 });
 
 // Logo visibility fix
